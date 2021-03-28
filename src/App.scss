@@ -15,6 +15,7 @@ html {
 body {
   box-sizing: border-box;
   font-family: $main-font;
+  height: 100vh;
 }
 @media screen and (max-width: 340px) {
   body {
@@ -22,66 +23,74 @@ body {
   }
 }
 
-#calculator {
-  background-color: $calculator-background;
-  color: $font-color;
-  width: 20em;
-  padding: 0.2em;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  
-  .display {
-    display: flex;
-    flex-direction: column;
-    padding: 0 0.2em;
-    word-break: break-all;
-    line-height: 1em;
-    font-size: 0.8em;
-    text-align: right;
-    color: $equals-color;
-    #display {
-      font-size: 1rem;
-      color: $font-color;
-    }
-  }
-  
-  .keypad {
-    height: 20em;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-gap: 0.1em;
-  
-    .key {  
-      position: relative;
-      font-family: inherit;
-      font-weight: 600;
-      color: inherit;
-      background-color: $key-color;
-      border: none;
-      &:focus, &:hover {
-        outline: $font-color solid 0.1em;
-      }
-      &:active {
-        opacity: 0.5;
-      }
-      &#clear {
-        grid-column: 1/3;
-        background-color: $AC-color;
-      }
-      &#equals {
-        grid-row: 4/6;
-        grid-column: 4;
-        background-color: $equals-color;
-      }
-      &#zero {
-        grid-column: 1/3;
-      }
-      &#divide, &#multiply, &#subtract, &#add {
-        background-color: $operators-color;
-      }
-    }
+@media screen and (max-height: 400px) {
+  body {
+    height: 130vh;
   }
 }
+
+#root {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  #calculator {
+    background-color: $calculator-background;
+    color: $font-color;
+    width: 20em;
+    margin: 0.5rem;
+    padding: 0.2em;  
+    .display {
+      display: flex;
+      flex-direction: column;
+      padding: 0 0.2em;
+      word-break: break-all;
+      line-height: 1em;
+      font-size: 0.8em;
+      text-align: right;
+      color: $equals-color;
+      #output {
+        font-size: 1rem;
+        color: $font-color;
+      }
+    }
+    
+    .keypad {
+      height: 20em;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      grid-gap: 0.1em;
+    
+      .key {  
+        position: relative;
+        font-family: inherit;
+        font-weight: 600;
+        color: inherit;
+        background-color: $key-color;
+        border: none;
+        &:focus, &:hover {
+          outline: $font-color solid 0.1em;
+        }
+        &:active {
+          opacity: 0.5;
+        }
+        &#clear {
+          grid-column: 1/3;
+          background-color: $AC-color;
+        }
+        &#equals {
+          grid-row: 4/6;
+          grid-column: 4;
+          background-color: $equals-color;
+        }
+        &#zero {
+          grid-column: 1/3;
+        }
+        &#divide, &#multiply, &#subtract, &#add {
+          background-color: $operators-color;
+        }
+      }
+    }
+  } //#calculator
+} //#root

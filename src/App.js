@@ -116,6 +116,7 @@ class App extends Component {
         if (evaluated) return this.setState({ 
           outputVal: op,
           formula: prevVal.toString().concat(op),
+          prevVal: prevVal.toString(),
           evaluated: false
         });
         

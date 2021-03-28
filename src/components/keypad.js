@@ -5,7 +5,7 @@ const Keypad = (props) => {
 
 	return (
 		<div 
-		  class='keypad'
+		  className='keypad'
 		  onClick={props.handleClick}
 		>
 			{keys}    

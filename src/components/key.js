@@ -1,6 +1,6 @@
 const Key = (props) => (
 	<button 
-	  class='key'
+	  className='key'
 	  id={props.id}
 	  value={props.text}
 	>

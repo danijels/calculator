@@ -1,9 +1,9 @@
 const Display = (props) => (
-	<div class='display'>
+	<div className='display'>
 	    <p>
 	      {props.formula}
 	    </p>
-	    <p id='display'>
+	    <p id='output'>
 	      {props.output}
 	    </p>
 	</div>
