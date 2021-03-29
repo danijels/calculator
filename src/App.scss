@@ -37,52 +37,51 @@ body {
   #calculator {
     background-color: $calculator-background;
     color: $font-color;
-    width: 20em;
     margin: 0.5rem;
     padding: 0.2em;  
+    width: 20em;
     .display {
+      color: $equals-color;
       display: flex;
       flex-direction: column;
-      padding: 0 0.2em;
-      word-break: break-all;
-      line-height: 1em;
       font-size: 0.8em;
+      line-height: 1em;
+      padding: 0 0.2em;
       text-align: right;
-      color: $equals-color;
+      word-break: break-all;
       #output {
-        font-size: 1rem;
         color: $font-color;
+        font-size: 1rem;
       }
     }
     
     .keypad {
-      height: 20em;
       display: grid;
+      height: 20em;
+      grid-gap: 0.1em;
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(5, 1fr);
-      grid-gap: 0.1em;
     
       .key {  
-        position: relative;
-        font-family: inherit;
-        font-weight: 600;
-        color: inherit;
         background-color: $key-color;
         border: none;
+        color: inherit;
+        font-family: inherit;
+        font-weight: 600;
+        position: relative;
         &:focus, &:hover {
           outline: $font-color solid 0.1em;
         }
         &:active {
           opacity: 0.5;
         }
-        &#clear {
-          grid-column: 1/3;
+        &#clear, &#delete {
           background-color: $AC-color;
         }
         &#equals {
-          grid-row: 4/6;
-          grid-column: 4;
           background-color: $equals-color;
+          grid-column: 4;
+          grid-row: 4/6;
         }
         &#zero {
           grid-column: 1/3;

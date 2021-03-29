@@ -15,6 +15,7 @@ class App extends Component {
         }
         this.handleClick = this.handleClick.bind(this);
         this.clear = this.clear.bind(this);
+        this.handleClearEntry = this.handleClearEntry.bind(this);
         this.handleNums = this.handleNums.bind(this);
         this.warn = this.warn.bind(this);
         this.handleDecimal = this.handleDecimal.bind(this);
@@ -38,6 +39,7 @@ class App extends Component {
             if (val === '.') return this.handleDecimal();
             if (/[/*\-+]/.test(val)) return this.handleOperators(val);
             if (['=', 'Enter'].includes(val)) return this.handleEval();
+            if (val === 'CE') return this.handleClearEntry();
         }
     }
     clear() {
@@ -45,9 +47,18 @@ class App extends Component {
           outputVal: '0',
           prevVal: '0',
           formula: '',
-          currentSign: 'pos',
           evaluated: false
         })
+    }
+    handleClearEntry() {
+      const formula = this.state.formula;
+      const lastSign = formula.split('').reverse().join('').match(/--|[+/*-]/);
+      const indOfLast = formula.lastIndexOf(lastSign);
+
+      this.setState({
+        outputVal: '0',
+        formula: formula.slice(0, indOfLast + 1)
+      });
     }
     handleNums(val) {
         const { outputVal, formula, evaluated } = this.state;
@@ -168,9 +179,10 @@ class App extends Component {
         }
     }
     render() {
-        const keysText = ['AC', '/', '*', '7', '8', '9', '-', '4', '5', '6', '+', '1', '2', '3', '=', '0', '.'];
+        const keysText = ['AC', 'CE', '/', '*', '7', '8', '9', '-', '4', '5', '6', '+', '1', '2', '3', '=', '0', '.'];
         const keysIds = [
           'clear', 
+          'delete',
           'divide', 
           'multiply', 
           'seven', 
