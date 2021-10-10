@@ -36,7 +36,7 @@ class App extends Component {
         if (!output.includes('LIMIT')) {
             if (val === 'AC') return this.clear();
             if (Number(val) >= 0 && Number(val) <= 9) return this.handleNums(val);
-            if (val === '.') return this.handleDecimal();
+            if (val === '.' || val == ',') return this.handleDecimal();
             if (/[/*\-+]/.test(val)) return this.handleOperators(val);
             if (['=', 'Enter'].includes(val)) return this.handleEval();
             if (val === 'CE') return this.handleClearEntry();
